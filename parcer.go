@@ -3,6 +3,8 @@ package graphlib
 import (
 	"bufio"
 	"os"
+	"strconv"
+	"strings"
 )
 
 //Parser is object for parsing graph from file
