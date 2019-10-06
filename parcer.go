@@ -12,30 +12,40 @@ type Parser struct {
 
 //ParseUnweightedUndirectedGraphFromFile is parsing unweighted undirected graph from file with struct
 func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, error) {
-	result := new(Graph)
-	result.Init()
 
-	file, err := os.Open(path)
+        result := new(Graph)
+        result.Init()
 
-	if err != nil {
-		p.e = err
-		return result, err
-	}
-	defer file.Close()
+        file, err := os.Open(path)
 
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		edges := make([]int, countNumbers(scanner.Text()))
-		numbers := strings.Fields(scanner.Text())
-		for i, num := range numbers {
-			edges[i],err = strconv.Atoi(num)
-			if err != nil{
-				p.e = err
-				return result,err
-			}
-		}
+        if err != nil {
+                p.e = err
+                return result, err
+        }
+        defer file.Close()
 
-		result.AddVertexWithEdges(edges)
+        scanner := bufio.NewScanner(file)
+        for scanner.Scan() {
+                edges := make([]int, countNumbers(scanner.Text()))
+                numbers := strings.Fields(scanner.Text())
+                for i, num := range numbers {
+                        edges[i],err = strconv.Atoi(num)
+                        if err != nil{
+                                p.e = err
+                                return result,err
+                        }
+                }
+
+                result.AddVertexWithEdges(edges)
+        }
+
+        if scanner.Err() != nil {
+                p.e = scanner.Err()
+                return result, scanner.Err()
+        }
+
+        return result, nil
+
 }
 
 //Err return last parser error
