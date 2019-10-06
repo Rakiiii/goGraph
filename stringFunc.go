@@ -1,4 +1,4 @@
-package graph
+package graphlib
 
 func countNumbers(str string) int {
 

@@ -1,4 +1,4 @@
-package graph
+package graphlib
 
 //Graph is struct that describe graph with vertex edges popose in map
 type Graph struct {
@@ -36,7 +36,3 @@ func (g *Graph) GetVertexEdges(ver int) []int {
 func (g *Graph) Size() int {
 	return g.lastVertex
 }
-
-//lates add some comm for update package
-
-
