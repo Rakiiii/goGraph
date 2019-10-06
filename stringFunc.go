@@ -2,7 +2,7 @@ package graphlib
 
 func countNumbers(str string) int {
 
-	counter := 0
+	counter := 1
 	for _, s := range str {
 		if s == ' ' {
 			counter++
