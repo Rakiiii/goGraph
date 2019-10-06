@@ -8,8 +8,8 @@ import (
 //Parser is object for parsing graph from file
 type Parser struct{}
 
-//parseUnweightedUndirectedGraphFromFile is parsing unweighted undirected graph from file with struct
-func (p *Parser) parseUnweightedUndirectedGraphFromFile(path string) (*Graph, error) {
+//ParseUnweightedUndirectedGraphFromFile is parsing unweighted undirected graph from file with struct
+func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, error) {
 
 	result := new(Graph)
 
