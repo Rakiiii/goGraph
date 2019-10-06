@@ -2,22 +2,21 @@ package graphlib
 
 //Graph is struct that describe graph with vertex edges popose in map
 type Graph struct {
-	graph      map[int][]int
-	lastVertex int
+	graph      [][]int
+	//lastVertex int
 }
 
 //Init is initialize graph with nonnil map
 func (g *Graph)Init(){
-	g.graph = make(map[int][]int)
-	g.lastVertex = 0
+	g.graph = make([][]int,0)
+	//g.lastVertex = 0
 }
 
 //AddVertex function is adding new vertex without edges t graph
 func (g *Graph) AddVertex() {
 
-	g.graph[g.lastVertex] = make([]int, 1)
+	g.graph = append(g.graph,make([]int,1))
 
-	g.lastVertex++
 }
 
 //AddEdgesToVertex function is setting edges of vertex with num @vertex with edges countained in @edges
@@ -28,9 +27,8 @@ func (g *Graph) AddEdgesToVertex(vertex int, edges []int) {
 
 //AddVertexWithEdges function is adding new vertex with edges contained in @edges
 func (g *Graph) AddVertexWithEdges(edges []int) {
-	g.graph[g.lastVertex] = edges
+	g.graph = append(g.graph,edges)
 
-	g.lastVertex++
 }
 
 //GetEdges returning edges of vertex number @ver
@@ -40,5 +38,5 @@ func (g *Graph) GetEdges(ver int) []int {
 
 //Size return amount of added vertex
 func (g *Graph) Size() int {
-	return g.lastVertex-1
+	return len(g.graph)
 }
