@@ -3,13 +3,11 @@ package graphlib
 //Graph is struct that describe graph with vertex edges popose in map
 type Graph struct {
 	graph      [][]int
-	//lastVertex int
 }
 
 //Init is initialize graph with nonnil map
 func (g *Graph)Init(){
-	g.graph = make([][]int,0)
-	//g.lastVertex = 0
+	g.graph = make([][]int,0,0)
 }
 
 //AddVertex function is adding new vertex without edges t graph
@@ -38,5 +36,5 @@ func (g *Graph) GetEdges(ver int) []int {
 
 //Size return amount of added vertex
 func (g *Graph) Size() int {
-	return len(g.graph)
+	return len(g.graph)-1
 }
