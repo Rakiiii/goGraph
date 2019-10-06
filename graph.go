@@ -36,3 +36,7 @@ func (g *Graph) GetVertexEdges(ver int) []int {
 func (g *Graph) Size() int {
 	return g.lastVertex
 }
+
+//lates add some comm for update package
+
+

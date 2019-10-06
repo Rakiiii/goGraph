@@ -6,7 +6,9 @@ import (
 )
 
 //Parser is object for parsing graph from file
-type Parser struct{}
+type Parser struct {
+	e error
+}
 
 //ParseUnweightedUndirectedGraphFromFile is parsing unweighted undirected graph from file with struct
 func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, error) {
@@ -16,6 +18,7 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 	file, err := os.Open(path)
 
 	if err != nil {
+		p.e = err
 		return result, err
 	}
 	defer file.Close()
@@ -34,9 +37,15 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 	}
 
 	if scanner.Err() != nil {
+		p.e = scanner.Err()
 		return result, scanner.Err()
 	}
 
 	return result, nil
 
+}
+
+//Err return last parser error
+func (p *Parser) Err() error {
+	return p.e
 }
