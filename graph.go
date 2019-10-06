@@ -40,5 +40,5 @@ func (g *Graph) GetEdges(ver int) []int {
 
 //Size return amount of added vertex
 func (g *Graph) Size() int {
-	return g.lastVertex
+	return g.lastVertex-1
 }
