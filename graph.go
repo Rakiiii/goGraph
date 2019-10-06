@@ -6,6 +6,12 @@ type Graph struct {
 	lastVertex int
 }
 
+//Init is initialize graph with nonnil map
+func (g *Graph)Init(){
+	graph = make(map[int][]int)
+	lastVertex = 0
+}
+
 //AddVertex function is adding new vertex without edges t graph
 func (g *Graph) AddVertex() {
 
