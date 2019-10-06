@@ -16,8 +16,7 @@ type Parser struct {
 func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, error) {
 
         result := new(Graph)
-        result.Init()
-
+        
         file, err := os.Open(path)
 
         if err != nil {
