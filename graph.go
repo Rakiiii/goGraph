@@ -6,29 +6,29 @@ type Graph struct {
 	lastVertex int
 }
 
-//addVertex function is adding new vertex without edges t graph
-func (g *Graph) addVertex() {
+//AddVertex function is adding new vertex without edges t graph
+func (g *Graph) AddVertex() {
 
 	g.graph[g.lastVertex] = make([]int, 1)
 
 	g.lastVertex++
 }
 
-//addEdgesToVertex function is setting edges of vertex with num @vertex with edges countained in @edges
-func (g *Graph) addEdgesToVertex(vertex int, edges []int) {
+//AddEdgesToVertex function is setting edges of vertex with num @vertex with edges countained in @edges
+func (g *Graph) AddEdgesToVertex(vertex int, edges []int) {
 	g.graph[vertex] = edges
 
 }
 
-//addVertexWithEdges function is adding new vertex with edges contained in @edges
-func (g *Graph) addVertexWithEdges(edges []int) {
+//AddVertexWithEdges function is adding new vertex with edges contained in @edges
+func (g *Graph) AddVertexWithEdges(edges []int) {
 	g.graph[g.lastVertex] = edges
 
 	g.lastVertex++
 }
 
-//getVertexEdges returning edges of vertex number @ver
-func (g *Graph) getVertexEdges(ver int) []int {
+//GetVertexEdges returning edges of vertex number @ver
+func (g *Graph) GetVertexEdges(ver int) []int {
 	return g.graph[ver]
 }
 

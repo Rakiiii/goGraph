@@ -30,6 +30,7 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 			}
 		}
 
+		result.AddVertexWithEdges(edges)
 	}
 
 	if scanner.Err() != nil {
