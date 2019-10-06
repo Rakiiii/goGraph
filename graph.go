@@ -27,8 +27,8 @@ func (g *Graph) AddVertexWithEdges(edges []int) {
 	g.lastVertex++
 }
 
-//GetVertexEdges returning edges of vertex number @ver
-func (g *Graph) GetVertexEdges(ver int) []int {
+//GetEdges returning edges of vertex number @ver
+func (g *Graph) GetEdges(ver int) []int {
 	return g.graph[ver]
 }
 
