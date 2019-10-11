@@ -15,37 +15,52 @@ type Parser struct {
 //ParseUnweightedUndirectedGraphFromFile is parsing unweighted undirected graph from file with struct
 func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, error) {
 
-        result := new(Graph)
-        
-        file, err := os.Open(path)
+	result := new(Graph)
 
-        if err != nil {
-                p.e = err
-                return result, err
-        }
-        defer file.Close()
+	file, err := os.Open(path)
 
-        scanner := bufio.NewScanner(file)
-        for scanner.Scan() {
-                edges := make([]int, countNumbers(scanner.Text()))
-                numbers := strings.Fields(scanner.Text())
-                for i, num := range numbers {
-                        edges[i],err = strconv.Atoi(num)
-                        if err != nil{
-                                p.e = err
-                                return result,err
-                        }
-                }
+	if err != nil {
+		p.e = err
+		return result, err
+	}
+	defer file.Close()
 
-                result.AddVertexWithEdges(edges)
-        }
+	scanner := bufio.NewScanner(file)
+	scanner.Scan()
+	number := strings.Fields(scanner.Text())
 
-        if scanner.Err() != nil {
-                p.e = scanner.Err()
-                return result, scanner.Err()
-        }
+	amV, err := strconv.Atoi(number[0])
+	if err != nil {
+		return result, err
+	}
 
-        return result, nil
+	amE, err := strconv.Atoi(number[1])
+	if err != nil {
+		return result, err
+	}
+
+	result.Init(amV, amE)
+
+	for scanner.Scan() {
+		edges := make([]int, countNumbers(scanner.Text()))
+		numbers := strings.Fields(scanner.Text())
+		for i, num := range numbers {
+			edges[i], err = strconv.Atoi(num)
+			if err != nil {
+				p.e = err
+				return result, err
+			}
+		}
+
+		result.AddVertexWithEdges(edges)
+	}
+
+	if scanner.Err() != nil {
+		p.e = scanner.Err()
+		return result, scanner.Err()
+	}
+
+	return result, nil
 
 }
 
