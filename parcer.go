@@ -41,6 +41,7 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 
 	result.Init(amV, amE)
 
+	counter := 0
 	for scanner.Scan() {
 		edges := make([]int, countNumbers(scanner.Text()))
 		numbers := strings.Fields(scanner.Text())
@@ -52,7 +53,8 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 			}
 		}
 
-		result.AddVertexWithEdges(edges)
+		result.AddEdgesToVertex(counter, edges)
+		counter++
 	}
 
 	if scanner.Err() != nil {
