@@ -43,8 +43,8 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 
 	counter := 0
 	for scanner.Scan() {
-		edges := make([]int, countNumbers(scanner.Text()))
-		numbers := strings.Fields(scanner.Text())
+        numbers := strings.Fields(scanner.Text())
+		edges := make([]int, len(numbers))
 		for i, num := range numbers {
 			edges[i], err = strconv.Atoi(num)
 			if err != nil {
