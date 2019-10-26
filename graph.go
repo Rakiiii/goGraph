@@ -1,5 +1,7 @@
 package graphlib
 
+import "fmt"
+
 //Graph is struct that describe graph with vertex edges popose in map
 type Graph struct {
 	graph          [][]int
@@ -51,4 +53,22 @@ func (g *Graph) GetEdges(ver int) []int {
 //Size return amount of added vertex
 func (g *Graph) Size() int {
 	return len(g.graph) - 1
+}
+
+func (g *Graph) ConvertToCRS() *GraphCRS {
+	var newgraph GraphCRS
+	for _, row := range g.graph {
+		newgraph.AddVertexWithEdges(row)
+	}
+	return &newgraph
+}
+
+//Print printing graph as struct of addiction to stdout
+func (g *Graph) Print() {
+	for _, row := range g.graph {
+		for _, elem := range row {
+			fmt.Print(elem, " ")
+		}
+		fmt.Println()
+	}
 }
