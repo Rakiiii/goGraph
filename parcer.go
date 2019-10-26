@@ -43,7 +43,7 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 
 	counter := 0
 	for scanner.Scan() {
-        numbers := strings.Fields(scanner.Text())
+		numbers := strings.Fields(scanner.Text())
 		edges := make([]int, len(numbers))
 		for i, num := range numbers {
 			edges[i], err = strconv.Atoi(num)
@@ -64,6 +64,15 @@ func (p *Parser) ParseUnweightedUndirectedGraphFromFile(path string) (*Graph, er
 
 	return result, nil
 
+}
+
+//ParseUnweightedUndirectedGraphCRSFromFile parse grpah from file to CRS form
+func (p *Parser) ParseUnweightedUndirectedGraphCRSFromFile(path string) (*GraphCRS, error) {
+	g, err := p.ParseUnweightedUndirectedGraphFromFile(path)
+	if err != nil {
+		return nil, err
+	}
+	return g.ConvertToCRS(), nil
 }
 
 //Err return last parser error
