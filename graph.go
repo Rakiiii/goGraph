@@ -72,3 +72,14 @@ func (g *Graph) Print() {
 		fmt.Println()
 	}
 }
+
+//RenumVertex renumbered vertexes in grpah as in @neworder where @graph[i] = @graph[@neworder[i]]
+func (g *Graph) RenumVertex(neworder []int) {
+	newSet := make([][]int, len(g.graph))
+
+	for i, num := range neworder {
+		newSet[i] = g.graph[num]
+	}
+
+	g.graph = newSet
+}
