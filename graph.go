@@ -30,19 +30,21 @@ func (g *Graph) AmountOfEdges() int {
 func (g *Graph) AddVertex() {
 
 	g.graph = append(g.graph, make([]int, 1))
+	g.amountOfVertex++
 
 }
 
 //AddEdgesToVertex function is setting edges of vertex with num @vertex with edges countained in @edges
 func (g *Graph) AddEdgesToVertex(vertex int, edges []int) {
 	g.graph[vertex] = edges
-
+	g.amountOfEdges += len(edges)
 }
 
 //AddVertexWithEdges function is adding new vertex with edges contained in @edges
 func (g *Graph) AddVertexWithEdges(edges []int) {
 	g.graph = append(g.graph, edges)
-
+	g.amountOfVertex++
+	g.amountOfEdges += len(edges)
 }
 
 //GetEdges returning edges of vertex number @ver
