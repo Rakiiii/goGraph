@@ -88,7 +88,7 @@ func (g *Graph) RenumVertex(neworder []int) {
 	for i, num := range neworder {
 		newSet[i] = make([]int,len(g.graph[num]))
 		for j,vertex := range g.graph[num]{
-			newSet[i][j] = optPointers(vertex) 
+			newSet[i][j] = optPointers[vertex] 
 		}
 	}
 
