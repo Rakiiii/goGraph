@@ -75,12 +75,21 @@ func (g *Graph) Print() {
 	}
 }
 
+//todo:: add renumbering edges at grpah
 //RenumVertex renumbered vertexes in grpah as in @neworder where @graph[i] = @graph[@neworder[i]]
 func (g *Graph) RenumVertex(neworder []int) {
 	newSet := make([][]int, len(g.graph))
 
+	optPointers := make([]int,g.AmountOfVertex())
+	for i,num := range neworder{
+		optPointers[num] = i
+	}
+	
 	for i, num := range neworder {
-		newSet[i] = g.graph[num]
+		newSet[i] = make([]int,len(g.graph[num]))
+		for j,vertex := range g.graph[num]{
+			newSet[i][j] = optPointers(vertex) 
+		}
 	}
 
 	g.graph = newSet
