@@ -49,7 +49,15 @@ func (g *GraphCRS) AddVertexWithEdges(edges []int) {
 
 //GetEdges returning edges of vertex number @ver
 func (g *GraphCRS) GetEdges(ver int) []int {
-	return g.edges[g.vertex[ver]:g.vertex[ver+1]]
+	if ver == len(g.vertex)-1{
+		edges := make([]int,len(g.edges[g.vertex[ver]:]))
+		copy(edges,g.edges[g.vertex[ver]:])
+		return edges	
+	}else{
+		edges := make([]int,len(g.edges[g.vertex[ver]:g.vertex[ver+1]]))
+		copy(edges,g.edges[g.vertex[ver]:g.vertex[ver+1]])
+		return edges
+	}
 }
 
 //Size return amount of added vertex
