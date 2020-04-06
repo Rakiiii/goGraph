@@ -1,7 +1,9 @@
 package graphlib
 
-import "fmt"
-
+import (
+	"fmt"
+	gosort "github.com/Rakiiii/goSort"
+)
 //Graph is struct that describe graph with vertex edges popose in map
 type Graph struct {
 	graph          [][]int
@@ -90,6 +92,7 @@ func (g *Graph) RenumVertex(neworder []int) {
 		for j,vertex := range g.graph[num]{
 			newSet[i][j] = optPointers[vertex] 
 		}
+		newSet[i] = gosort.QuicksortInt(newSet[i])
 	}
 
 	g.graph = newSet
