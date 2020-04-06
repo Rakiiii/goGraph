@@ -51,7 +51,9 @@ func (g *Graph) AddVertexWithEdges(edges []int) {
 
 //GetEdges returning edges of vertex number @ver
 func (g *Graph) GetEdges(ver int) []int {
-	return g.graph[ver]
+	edges := make([]int,len(g.graph[ver]))
+	copy(edges,g.graph[ver])
+	return edges
 }
 
 //Size return amount of added vertex
