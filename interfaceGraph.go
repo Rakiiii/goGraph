@@ -11,4 +11,5 @@ type IGraph interface {
 	GetEdges(ver int) []int
 	Size() int
 	Print()
+	RenumVertex([]int)
 }
